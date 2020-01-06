@@ -29,7 +29,7 @@
 bl_info = {
     "name": "Precision Drawing Tools (PDT)",
     "author": "Alan Odom (Clockmender), Rune Morling (ermo)",
-    "version": (1, 1, 8),
+    "version": (1, 1, 6),
     "blender": (2, 80, 0),
     "location": "View3D > UI > PDT",
     "description": "Precision Drawing Tools for Acccurate Modelling",
@@ -360,7 +360,7 @@ class PDTSceneProperties(PropertyGroup):
         update=command_run,
         description=PDT_DES_VALIDLET,
     )
-    mathsout : FloatProperty(
+    maths_output : FloatProperty(
         name="Maths output",
         default=0,
         description=PDT_DES_OUTPUT,

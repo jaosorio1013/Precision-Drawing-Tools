@@ -226,7 +226,7 @@ def command_run(self, context):
         elif mode == "p":
             pg.percent = num
         elif mode == "o":
-            pg.mathsout = num
+            pg.maths_output = num
         return
     # "o"/"x"/"y"/"z" modes are only legal for Math Operation
     else:
