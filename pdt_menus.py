@@ -351,28 +351,26 @@ class PDT_PT_PanelViewControl(Panel):
         col = row.column()
         col.label(text="View Rotation")
         col = row.column()
-        col.operator("pdt.viewrot", text="Rotate Abs").ui_group = 0
+        col.operator("pdt.viewrot", text="Rotate Abs")
         row = box.row()
         split = row.split(factor=0.35, align=True)
-        split.alert = ui_groups[0]
         split.label(text="Rotation")
         split.prop(pdt_pg, "rotation_coords", text="")
         row = box.row()
         col = row.column()
-        col.alert = ui_groups[1]
         col.prop(pdt_pg, "vrotangle", text="Angle")
         if ui_width() < ui_cutoff:
             row = box.row()
         col = row.column()
-        col.operator("pdt.viewleft", text="", icon="TRIA_LEFT").ui_group = 1
+        col.operator("pdt.viewleft", text="", icon="TRIA_LEFT")
         col = row.column()
-        col.operator("pdt.viewright", text="", icon="TRIA_RIGHT").ui_group = 1
+        col.operator("pdt.viewright", text="", icon="TRIA_RIGHT")
         col = row.column()
-        col.operator("pdt.viewup", text="", icon="TRIA_UP").ui_group = 1
+        col.operator("pdt.viewup", text="", icon="TRIA_UP")
         col = row.column()
-        col.operator("pdt.viewdown", text="", icon="TRIA_DOWN").ui_group = 1
+        col.operator("pdt.viewdown", text="", icon="TRIA_DOWN")
         col = row.column()
-        col.operator("pdt.viewroll", text="", icon="RECOVER_LAST").ui_group = 1
+        col.operator("pdt.viewroll", text="", icon="RECOVER_LAST")
         row = box.row()
         col = row.column()
         col.operator("pdt.viewiso", text="Isometric")

@@ -29,37 +29,13 @@ from bpy.types import Operator
 from math import pi
 from mathutils import Quaternion
 from .pdt_functions import debug, euler_to_quaternion
-from .pdt_menus import PDT_PT_PanelViewControl
 
-# Runs when operator's tooltip is triggered
-def highlight(ui_group, redraw):
-    ui_groups = PDT_PT_PanelViewControl._ui_groups
-
-    # Highlight
-    ui_groups[ui_group] = True
-    redraw()
-
-    def set_false():
-        ui_groups[ui_group] = False
-        redraw()
-
-    bpy.app.timers.register(set_false, first_interval=2.0)
 
 class PDT_OT_ViewRot(Operator):
     bl_idname = "pdt.viewrot"
     bl_label = "Rotate View"
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Rotation by Absolute Values"
-
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
 
     def execute(self, context):
         """View Rotation by Absolute Values.
@@ -96,16 +72,6 @@ class PDT_OT_vRotL(Operator):
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Orbit Left by Delta Value"
 
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
-
     def execute(self, context):
         """View Orbit Left by Delta Value.
 
@@ -133,16 +99,6 @@ class PDT_OT_vRotR(Operator):
     bl_label = "Rotate Right"
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Orbit Right by Delta Value"
-
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
 
     def execute(self, context):
         """View Orbit Right by Delta Value.
@@ -173,16 +129,6 @@ class PDT_OT_vRotU(Operator):
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Orbit Up by Delta Value"
 
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
-
     def execute(self, context):
         """View Orbit Up by Delta Value.
 
@@ -211,16 +157,6 @@ class PDT_OT_vRotD(Operator):
     bl_label = "Rotate Down"
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Orbit Down by Delta Value"
-
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
 
     def execute(self, context):
         """View Orbit Down by Delta Value.
@@ -251,16 +187,6 @@ class PDT_OT_vRoll(Operator):
     bl_options = {"REGISTER", "UNDO"}
     bl_description = "View Roll by Delta Value"
 
-    ui_group: bpy.props.IntProperty(
-        default=-1, options={'HIDDEN', 'SKIP_SAVE'})
-
-    @classmethod
-    def description(cls, context, self):
-        if self.ui_group != -1:
-            redraw = context.area.tag_redraw
-            highlight(self.ui_group, redraw)
-        return cls.bl_description
-
     def execute(self, context):
         """View Roll by Delta Value.
 
@@ -285,11 +211,10 @@ class PDT_OT_vRoll(Operator):
 
 
 class PDT_OT_viso(Operator):
-    """Isometric View."""
-
     bl_idname = "pdt.viewiso"
     bl_label = "Isometric View"
     bl_options = {"REGISTER", "UNDO"}
+    bl_description = "Isometric View."
 
     def execute(self, context):
         """Set Isometric View.
@@ -313,11 +238,10 @@ class PDT_OT_viso(Operator):
 
 
 class PDT_OT_Reset3DView(Operator):
-    """Reset 3D View to Blender Defaults."""
-
     bl_idname = "pdt.reset_3d_view"
     bl_label = "Reset 3D View"
     bl_options = {'REGISTER', 'UNDO'}
+    bl_description = "Reset 3D View to Blender Defaults."
 
     def execute(self, context):
         """Reset 3D View to Blender Defaults.
